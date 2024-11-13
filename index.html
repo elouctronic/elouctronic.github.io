@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ハッカーのウェブサイト</title>
+    <link rel="icon" type="image/vnd.icon" href="favicon.ico">
+    <style>
+        /* Styles de base */
+        body {
+            background: linear-gradient(145deg, #000000, #000000);
+            color: #610088;
+            font-family: "Courier New", Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1, h2, p {
+            margin: 0;
+            padding: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            /* Retirer les pointillés */
+            border-bottom: none;
+        }
+
+        /* Animation de texte tapé */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .typed-text {
+            display: inline-block;
+        }
+
+        .hidden { visibility: hidden; }
+
+        /* Section ASCII pour l'effet rétro */
+        .ascii-deco {
+            color: #590080;
+            font-size: 1.2em;
+            margin-top: 10px;
+            padding: 5px;
+        }
+
+        /* Barre de navigation en haut */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 9999;
+            font-family: "Courier New", Courier, monospace;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar a {
+            color: #590080;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 20px;
+            padding: 5px 0;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Animation de la barre de chargement */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #9b59b6;
+            z-index: 9999;
+            animation: loading 2s linear forwards;
+        }
+
+        @keyframes loading {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barre de chargement -->
+    <div id="loading-screen"></div>
+
+    <!-- Barre de navigation en haut -->
+    <div class="navbar">
+        <a href="index.html">Accueil</a>
+        <a href="cv.html">CV</a>
+        <a href="secret.html">プライベート</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Audio préchargé sans autoplay -->
+    <audio id="audio" loop>
+        <source src="musique.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+      
+    <script>
+        // Fonction pour démarrer le son dès la première interaction de l'utilisateur
+        function startAudio() {
+            var audio = document.getElementById("audio");
+            audio.play().catch(function(error) {
+                console.log("Erreur de lecture du son:", error);
+            });
+        }
+
+        // On attend que l'utilisateur clique ou fasse défiler la page
+        window.onload = function() {
+            // Cacher l'écran de chargement lorsque la page est chargée
+            document.getElementById("loading-screen").style.display = "none";
+
+            // Fonction pour afficher chaque ligne une par une avec animation de frappe
+            const lines = document.querySelectorAll("#paragraph h1, #paragraph h2, #paragraph p");
+            let delay = 0;
+
+            lines.forEach((line) => {
+                setTimeout(() => {
+                    line.classList.remove("hidden");
+                    line.style.animation = "typing 2s steps(30, end) forwards";
+                }, delay);
+                delay += 3000; // Délai de 3 secondes entre chaque ligne
+            });
+
+            // Ajouter un événement pour démarrer le son sur le premier clic ou scroll
+            document.body.addEventListener('click', startAudio, { once: true });
+            document.body.addEventListener('scroll', startAudio, { once: true });
+        };
+    </script>
+      
+    <!-- Paragraphes à afficher ligne par ligne -->
+    <div id="paragraph">
+        <h1 id="line1" class="hidden">Bienvenue dans mon site web_</h1>
+        <h2 id="line2" class="hidden">Si tu as du courage clique quelque part sur la page, sinon... part.</h2>
+        <h2 id="line3" class="hidden">Je suis 匿名の誰か, un hacker éthique.</h2>
+        <h2 id="line4" class="hidden">J'ai 数字 ans.</h2>
+        <h2 id="line5" class="hidden">J'habite à 私の家で.</h2>
+        <h2 id="line6" class="hidden">Mes loisirs sont: La guitare et la natation.</h2>
+        <h2 id="line7" class="hidden">Ma passion est le ハッキング.</h2>
+        <h2 id="line7" class="hidden">Si tu veux me contacter mon numéro est le 隠し電話.</h2>
+        <h2 id="line7" class="hidden">Mon est adresse IP est : 127.0.0.1 (愚かな冗談).</h2>
+        <h2 id="line8" class="hidden">Si tu veux mon CV, il faut le code... Peut être que c'est 私のパスワード, a voir...</h2>
+        <h2 id="line9" class="hidden">Si je te connais, tu est là, tu as une raison... Je te laisse faire ce que t'a a faire :</h2>
+        <h2 id="line9" class="hidden">プライベートな部分に行きます。あなたはパスワードを知っています。</h2>
+        <p id="line10" class="hidden">----------------------------------------------------------------------</p>
+        <p id="line11" class="hidden">Si il est pratiqué a bon escient le hacking n'est pas un crime...</p>
+        <p id="line12" class="hidden">C'est un art.</p>
+        <p id="line12" class="hidden">                      自分</p>
+    </div>
+</body>
+</html>
