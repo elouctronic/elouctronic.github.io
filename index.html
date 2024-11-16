@@ -17,15 +17,16 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh; /* Permet au contenu de dépasser la hauteur de l'écran */
             margin: 0;
             text-align: center;
-            overflow: hidden;
+            overflow-y: auto; /* Active le défilement si nécessaire */
+            padding: 20px; /* Ajoute un peu d'espace autour du contenu */
         }
 
         h1, h2, p {
             margin: 0;
-            padding: 5px;
+            padding: 10px 0; /* Réduit les marges pour économiser de l'espace */
             white-space: nowrap;
             overflow: hidden;
         }
@@ -61,7 +62,7 @@
             color: #590080;
             text-decoration: none;
             font-weight: bold;
-            margin: 0 20px;
+            margin: 0 10px;
             padding: 5px 0;
             transition: color 0.3s ease-in-out;
         }
@@ -141,6 +142,7 @@
       
     <!-- Paragraphes à afficher ligne par ligne -->
     <div id="paragraph">
+        <p></p>
         <h1 id="line1" class="hidden">Bienvenue dans mon site web_</h1>
         <h2 id="line2" class="hidden">Si tu as du courage clique quelque part sur la page, sinon... part.</h2>
         <h2 id="line3" class="hidden">Je suis 匿名の誰か, un hacker éthique.</h2>
